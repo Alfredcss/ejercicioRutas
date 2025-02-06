@@ -1,0 +1,77 @@
+<div style="margin: 20px">
+  <h1>Rutas de San Juan del Rio</h1>
+
+  @if(autobuses.length > 0){
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Salida</th>
+          <th>Destino</th>
+          <th>Numero de Ejes</th>
+          <th>Capacidad</th>
+          <th>Seleccionar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(autobus of autobuses; track autobus.id){
+          <tr>
+            <td>{{ autobus.id }}</td>
+            <td>{{ autobus.nombre }}</td>
+            <td>{{ autobus.salida }}</td>
+            <td>{{ autobus.destino }}</td>
+            <td>{{ autobus.numeroDeEjes }}</td>
+            <td>{{ autobus.capacidad }}</td>
+            <td>
+              <button type="button" class="btn btn-warning"
+              (click)="seleccionarAutobus(autobus)">Seleccionar</button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger"
+              (click)="eliminarAutobus(autobus.id)">Eliminar</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }@else {
+    <p>NO HAY RUTAS</p>
+  }
+</div>
+//formulario
+<div class="col-sm-4">
+  <p>
+    ID: <input type="text" class="form-control"
+    [(ngModel)]="autobus.id"/>
+  </p>
+  <p>
+    ID: <input type="text" class="form-control"
+    [(ngModel)]="autobus.nombre"/>
+  </p>
+  <p>
+    ID: <input type="text" class="form-control"
+    [(ngModel)]="autobus.salida"/>
+  </p>
+  <p>
+    ID: <input type="text" class="form-control"
+    [(ngModel)]="autobus.destino"/>
+  </p>
+  <p>
+    ID: <input type="text" class="form-control"
+    [(ngModel)]="autobus.numeroDeEjes"/>
+  </p>
+  <p>
+    ID: <input type="text" class="form-control"
+    [(ngModel)]="autobus.capacidad"/>
+  </p>
+  <p>
+    <button type="button" class="btn btn-primary"
+    (click)="agregarAutobus()">Agregar</button>
+    <button type="button" class="btn btn-success"
+    (click)="modificarAutobus()">Modificar</button>
+
+  </p>
+</div>
+<router-outlet></router-outlet>
